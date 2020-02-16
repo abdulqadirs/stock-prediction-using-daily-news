@@ -4,7 +4,7 @@ import torch
 
 from config import Config
 
-logger = logging.getLogger('captioning')
+logger = logging.getLogger('stock-prediction')
 
 def reading_config(file_path):
     """

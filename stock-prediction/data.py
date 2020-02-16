@@ -59,7 +59,7 @@ def clean_data(raw_data):
     all_news = {}
     labels = []
     dates = []
-    for index, row in raw_data.iterrows():
+    for _, row in raw_data.iterrows():
         news = row['News']
         date = row['Date']
         label = row['Label']
@@ -82,8 +82,8 @@ def clean_data(raw_data):
         labels.append(label)
         all_news[date] = daily_headlines
 
-    dates = np.array(dates)
-    labels = np.array(labels)
+    #dates = np.array(dates)
+    #labels = np.array(labels)
     
     return dates, labels, all_news
 
@@ -154,6 +154,7 @@ class PadSequence(object):
         labels = [item[1] for item in batch]
         news = [item[2] for item in batch]
         lengths = [item[3] for item in batch]
+        #calculating the sum of lengths of dialy headline
         lengths_sum = []
         for headline_length in lengths:
             lengths_sum.append(sum(headline_length))
@@ -174,9 +175,9 @@ class PadSequence(object):
                     pad = [0] * (max_length - len(daily_news))
                     daily_news += pad
         
-        #return torch.LongTensor(dates), torch.LongTensor(labels), torch.tensor(news), torch.tensor(lengths)
-        return dates, labels, news_batch, lengths_sum
+        return dates, torch.tensor(labels), torch.tensor(news_batch), torch.tensor(lengths)
 
+        
 class NewsStockDataLoader(Dataset):
     """
     Loads the dataset.
