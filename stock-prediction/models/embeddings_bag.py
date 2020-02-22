@@ -6,7 +6,7 @@ class TextClassifier(nn.Module):
         super().__init__()
         self.pretrained_emb = pretrained_emb
         self.fc = nn.Linear(emb_dim, num_classes)
-        self.softmax = nn.Softmax()
+        self.softmax = nn.Softmax(dim=1)
     
     def forward(self, text, offsets):
         embedded = self.pretrained_emb(text, offsets)

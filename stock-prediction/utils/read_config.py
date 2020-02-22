@@ -43,12 +43,13 @@ def reading_config(file_path):
     Config.set("pretrained_emb_dim", config.getint("pretrained_embeddings", "emb_dim", fallback=50))
 
     #Training
-    Config.set("training_batch_size", config.getint("training", "batch_size", fallback=2))
+    Config.set("training_batch_size", config.getint("training", "batch_size", fallback=4))
     Config.set("epochs", config.getint("training", "epochs", fallback=1000))
     Config.set("learning_rate", config.getfloat("training", "learning_rate", fallback=0.01))
 
     #Validation
-    Config.set("validation_batch_size", config.getint("validation", "batch_size", fallback=1))
+    Config.set("validation_batch_size", config.getint("validation", "batch_size", fallback=4))
+    Config.set("validate_every", config.getint("validation", "validate_every", fallback=10))
 
     #Testing
     Config.set("testing_batch_size", config.getint("testing", "batch_size", fallback=1))

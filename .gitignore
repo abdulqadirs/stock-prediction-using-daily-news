@@ -9,6 +9,12 @@ __pycache__/
 #pretrained word embeddings
 pretrained-embeddings/
 
+#output directory
+output/
+
+#research papers
+research-papers/
+
 # Distribution / packaging
 .Python
 build/
